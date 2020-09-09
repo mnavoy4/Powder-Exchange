@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Listing from './Listing';
+import Cart from './Cart'
 
 export default class App extends React.Component {
 
@@ -53,6 +54,7 @@ export default class App extends React.Component {
           <main className='main'>
             <div className='content'>
               <Route path='/listings/:id' component={Listing}/>
+              <Route path='/cart/:id?' component={Cart} />
               <Route exact path='/' component={Home} />
             </div>
         
