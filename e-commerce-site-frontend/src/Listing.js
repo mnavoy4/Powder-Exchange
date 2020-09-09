@@ -16,6 +16,10 @@ export default function Listing(props) {
     };
   }, []);
 
+  const addToCart = () => {
+    props.history.push(`/cart/${props.match.params.id}`)
+  }
+
   return (
     <div>
       <div className='back-to-result-link'>
@@ -49,7 +53,7 @@ export default function Listing(props) {
                 <li>Price: ${listing.price}</li>
                 <li>Condition: {listing.condition}</li>
                 <li className='add-to-cart-button-li'>
-                  <button className='add-to-cart-button'>Add to Cart</button>
+                  <button onClick={addToCart} className='add-to-cart-button'>Add to Cart</button>
                 </li>
               </ul>
             </div>
