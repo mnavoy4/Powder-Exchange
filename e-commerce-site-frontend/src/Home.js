@@ -1,14 +1,28 @@
-import React from 'react';
-import data from './data';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { listListings } from './actions/listingActions';
+const listingsUrl = 'http://localhost:5000/listings';
 
 export default function Home(props) {
-  return <ul className='listings'>
+
+  const listingList = useSelector(state => state.listings);
+  const { listings, loading, error } = listingList;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listListings())
+    return () => {
+      //
+    }
+  }, []);
+
+  return loading ? <div>Loading...</div> : 
+    error ? <div>{error}</div> : 
+    <ul className='listings'>
       {
-        data.listings.map(listing => 
-          
-            <li>
+        listings.map(listing => 
+            <li key={listing.id}>
               <div className='listing'>
                 <Link to={`/listings/${listing.id}`}>
                   <img className='listing-image' src={listing.img_url} alt='listing' />
@@ -23,6 +37,5 @@ export default function Home(props) {
             </li>
           )
         }
-      
     </ul>
 }

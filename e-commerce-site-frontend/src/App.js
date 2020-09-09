@@ -25,7 +25,7 @@ export default class App extends React.Component {
               <button onClick={this.toggleSidebar}>
                 &#9776;
               </button>
-              <Link to="/" ></Link> 
+              <Link to="/" >Amazona</Link> 
             </div>
             <div className='header-links'>
               <a href='cart'>Cart</a>
