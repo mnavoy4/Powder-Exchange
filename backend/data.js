@@ -1,7 +1,7 @@
 export default {
   listings: [
     {
-      id: 1,
+      _id: 1,
       name: "Skis",
       category: "Ski",
       img_url: '/images/d1.jpg',
@@ -11,7 +11,7 @@ export default {
       description: "The best skiis description....."
     },
     {
-      id: 2,
+      _id: 2,
       name: "More Skis",
       category: "Snowboard",
       img_url: '/images/d1.jpg',
@@ -21,7 +21,7 @@ export default {
       description: "Some description....."
     },
     {
-      id: 3,
+      _id: 3,
       name: "Jacket",
       category: "Clothing",
       img_url: '/images/d1.jpg',
@@ -31,7 +31,7 @@ export default {
       description: "Another description....."
     },
     {
-      id: 4,
+      _id: 4,
       name: "Helmet",
       category: "Helmet",
       img_url: '/images/d1.jpg',

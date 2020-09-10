@@ -4,6 +4,7 @@ import './App.css';
 import Home from './Home';
 import Listing from './Listing';
 import Cart from './Cart'
+import SignIn from './SignIn';
 
 export default class App extends React.Component {
 
@@ -12,7 +13,6 @@ export default class App extends React.Component {
   }
 
   toggleSidebar = () => {
-    console.log("clicked");
     this.setState({
       sideBarOpen: !this.state.sideBarOpen
     })
@@ -30,7 +30,8 @@ export default class App extends React.Component {
             </div>
             <div className='header-links'>
               <a href='cart'>Cart</a>
-              <a href='signin'>Sign in</a>
+              <Link to='/signin'>Sign in</Link>
+              {/* <a href='signin'>Sign in</a> */}
             </div>
           </header>
             <aside className={`sidebar ${this.state.sideBarOpen ? "open" : null}`}>
@@ -53,6 +54,7 @@ export default class App extends React.Component {
             </aside>
           <main className='main'>
             <div className='content'>
+              <Route path='/signin' component={SignIn} />
               <Route path='/listings/:id' component={Listing}/>
               <Route path='/cart/:id?' component={Cart} />
               <Route exact path='/' component={Home} />

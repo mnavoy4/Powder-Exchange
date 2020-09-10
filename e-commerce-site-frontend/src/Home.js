@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listListings } from './actions/listingActions';
-const listingsUrl = 'http://localhost:5000/listings';
+// const listingsUrl = 'http://localhost:5000/listings';
 
 export default function Home(props) {
 
@@ -22,9 +21,9 @@ export default function Home(props) {
     <ul className='listings'>
       {
         listings.map(listing => 
-            <li key={listing.id}>
+            <li key={listing._id}>
               <div className='listing'>
-                <Link to={`/listings/${listing.id}`}>
+                <Link to={`/listings/${listing._id}`}>
                   <img className='listing-image' src={listing.img_url} alt='listing' />
                 </Link>
                 <div className='listing-name'>

@@ -34,13 +34,13 @@ export default function Cart(props) {
               cartItems.length === 0 ? 
               <div>Your Cart is Empty</div> :
               cartItems.map(cartItem => {
-                return (<li key={cartItem.id}>
+                return (<li key={cartItem._id}>
                   <div className='cart-item-img'>
                     <img src={cartItem.img_url} alt='listing' />
                   </div>
                   <div className='cart-item-name'>
-                    <div><Link to={`/listings/${cartItem.id}`}>{cartItem.name}</Link></div>
-                    <div><button onClick={() => handleRemoveFromCart(cartItem.id)}>Remove from cart</button></div>
+                    <div><Link to={`/listings/${cartItem._id}`}>{cartItem.name}</Link></div>
+                    <div><button onClick={() => handleRemoveFromCart(cartItem._id)}>Remove from cart</button></div>
                   </div>
                   <div className='cart-item-price'>${cartItem.price}</div>
                 </li>
