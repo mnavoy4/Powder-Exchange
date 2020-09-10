@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { listListings } from './actions/listingActions';
+import { listListings } from '../actions/listingActions';
 // const listingsUrl = 'http://localhost:5000/listings';
 
 export default function Home(props) {

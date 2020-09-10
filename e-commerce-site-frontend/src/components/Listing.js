@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { detailsListing } from './actions/listingActions';
+import { detailsListing } from '../actions/listingActions';
 
 export default function Listing(props) {
 

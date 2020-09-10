@@ -1,42 +1,46 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
-import Home from './Home';
-import Listing from './Listing';
-import Cart from './Cart'
-import SignIn from './SignIn';
+import Home from './components/Home';
+import Listing from './components/Listing';
+import Cart from './components/Cart'
+import SignIn from './components/SignIn';
+import { useSelector } from 'react-redux';
+import NewUser from './components/NewUser';
 
-export default class App extends React.Component {
+export default function App() {
 
-  state = {
-    sideBarOpen: false
+  const userSignIn = useSelector(state => state.userSignIn);
+  const { userInfo } = userSignIn;
+
+  const openSideBar = () => {
+    document.querySelector('.sidebar').classList.add('open');
   }
 
-  toggleSidebar = () => {
-    this.setState({
-      sideBarOpen: !this.state.sideBarOpen
-    })
+  const closeSideBar = () => {
+    document.querySelector('.sidebar').classList.remove('open')
   }
-  render(){
+
     return (
       <BrowserRouter>
         <div className='grid-container'>
           <header className='header'>
             <div className='brand'>
-              <button onClick={this.toggleSidebar}>
+              <button onClick={openSideBar}>
                 &#9776;
               </button>
               <Link to="/" >Amazona</Link> 
             </div>
             <div className='header-links'>
               <a href='cart'>Cart</a>
-              <Link to='/signin'>Sign in</Link>
-              {/* <a href='signin'>Sign in</a> */}
+              {
+                userInfo ? <Link to='/profile'>{userInfo.firstName}</Link> : <Link to='/signin'>Sign in</Link>
+              }
             </div>
           </header>
-            <aside className={`sidebar ${this.state.sideBarOpen ? "open" : null}`}>
+            <aside className={'sidebar'}>
               <h3>Shopping Categories</h3>
-              <button className='sidebar-close-button' onClick={this.toggleSidebar}>x</button>
+              <button className='sidebar-close-button' onClick={closeSideBar}>x</button>
               <ul>
                 <li>
                   <a href='/'>Skiis</a>
@@ -58,6 +62,7 @@ export default class App extends React.Component {
               <Route path='/listings/:id' component={Listing}/>
               <Route path='/cart/:id?' component={Cart} />
               <Route exact path='/' component={Home} />
+              <Route path='/newuser' component={NewUser} />
             </div>
         
           </main>
@@ -69,4 +74,3 @@ export default class App extends React.Component {
       </BrowserRouter>
     );
   }
-}

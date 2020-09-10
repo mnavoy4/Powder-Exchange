@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signIn } from './actions/userActions'
+import { signIn } from '../actions/userActions';
 
 
 export default function SignIn(props) {
@@ -14,7 +14,7 @@ export default function SignIn(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(signIn(email, password))
+    dispatch(signIn(email, password));
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function SignIn(props) {
             <button type='submit' className='checkout-button'>Sign In</button>
           </li>
           <li>New to the site?</li>
-          <li><Link to='/register' className='button secondary text-center'>Create your account</Link></li>
+          <li><Link to='/newuser' className='button secondary text-center'>Create your account</Link></li>
         </ul>
       </form>
     </div>

@@ -1,6 +1,6 @@
 import express from 'express';
 import User from '../models/userModel';
-import getToken from '../util';
+import { getToken } from '../util';
 
 const router = express.Router();
 
@@ -19,6 +19,26 @@ router.post('/signin', async (req, res) => {
     })
   } else {
     res.status(401).send({ message: 'Invalid Email or Password' })
+  }
+})
+router.post('/newuser', async (req, res) => {
+  const user = new User({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password
+  });
+  const newUser = await user.save();
+  if (newUser){
+    res.send({
+      _id: newUser.id,
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      email: newUser.email,
+      token: getToken(newUser)
+    })
+  } else {
+    res.status(401).send({ message: 'Invalid User Data' })
   }
 })
 
