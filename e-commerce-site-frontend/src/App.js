@@ -7,6 +7,7 @@ import Cart from './components/Cart'
 import SignIn from './components/SignIn';
 import { useSelector } from 'react-redux';
 import NewUser from './components/NewUser';
+import Listings from './components/Listings';
 
 export default function App() {
 
@@ -59,6 +60,7 @@ export default function App() {
           <main className='main'>
             <div className='content'>
               <Route path='/signin' component={SignIn} />
+              <Route path='/listings' component={Listings} />
               <Route path='/listings/:id' component={Listing}/>
               <Route path='/cart/:id?' component={Cart} />
               <Route exact path='/' component={Home} />

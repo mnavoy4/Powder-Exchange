@@ -4,7 +4,10 @@ import { LISTINGS_REQUEST,
         LISTINGS_FAIL,
         LISTING_DETAILS_REQUEST,
         LISTING_DETAILS_SUCCESS,
-        LISTING_DETAILS_FAIL } from "../constants/listingConstants";
+        LISTING_DETAILS_FAIL,
+        LISTING_SAVE_REQUEST,
+        LISTING_SAVE_SUCCESS,
+        LISTING_SAVE_FAIL } from "../constants/listingConstants";
 const listingsUrl = 'http://localhost:5000/listings';
 
 const listListings = () => async (dispatch) => {
@@ -27,6 +30,21 @@ const detailsListing = (listingId) => async (dispatch) => {
   catch(error) {
     dispatch({ type: LISTING_DETAILS_FAIL, payload: error.message });
   }
-} 
+}
 
-export { listListings, detailsListing }
+const saveListing = (listing) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: LISTING_SAVE_REQUEST, payload: listing });
+    const { userSignIn: { userInfo } } = getState();
+    const { data } = await axios.post(listingsUrl, listing, {
+      headers: {
+        'Authorization' : 'Bearer' + userInfo.token
+      }
+    });
+    dispatch({ type: LISTING_SAVE_SUCCESS, payload: data })
+  } catch(error) {
+    dispatch({ type: LISTING_SAVE_FAIL, payload: error.message })
+  };
+}
+
+export { listListings, detailsListing, saveListing }
