@@ -9,6 +9,16 @@ router.get('/', async (req, res) => {
   res.send(listings)
 });
 
+router.get('/:id', async (req, res) => {
+  const listing = await Listing.findOne({_id: req.params.id});
+  if(listing){
+    res.send(listing)
+  } else {
+    res.status(404).send({ message: 'Product not found' })
+  }
+  
+});
+
 router.post('/', async (req, res) => {
   const listing = new Listing({
     name: req.body.name,
@@ -25,5 +35,14 @@ router.post('/', async (req, res) => {
   }
   return res.status(500).send({ message: 'Error in creating Listing'})
 })
+
+router.get('/:id', async (req, res) => {
+  const listing = await Listing.findOne({ _id: req.params.id });
+  if (listing) {
+    res.send(listing);
+  } else {
+    res.status(404).send({ message: 'Listing Not Found.' });
+  }
+});
 
 export default router

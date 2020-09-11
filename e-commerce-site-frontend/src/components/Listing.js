@@ -6,7 +6,6 @@ import { detailsListing } from '../actions/listingActions';
 export default function Listing(props) {
 
   const listingDetails = useSelector(state => state.listingDetails);
-  console.log(listingDetails)
   const {listing, loading, error} = listingDetails;
   const dispatch = useDispatch();
   useEffect(() => {

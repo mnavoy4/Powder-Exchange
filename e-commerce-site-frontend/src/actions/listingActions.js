@@ -38,7 +38,7 @@ const saveListing = (listing) => async (dispatch, getState) => {
     const { userSignIn: { userInfo } } = getState();
     const { data } = await axios.post(listingsUrl, listing, {
       headers: {
-        'Authorization' : 'Bearer' + userInfo.token
+        'Authorization' : 'Bearer ' + userInfo.token
       }
     });
     dispatch({ type: LISTING_SAVE_SUCCESS, payload: data })

@@ -19,7 +19,7 @@ export default function Cart(props) {
   };
 
   const goToCheckout = () => {
-    props.history.push('signin?redirect=shipping')
+    props.history.push('/signin?redirect=shipping')
   }
 
   return (

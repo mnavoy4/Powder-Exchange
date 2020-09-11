@@ -9,7 +9,8 @@ export default function SignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const userSignIn = useSelector(state => state.userSignIn);
-  const { loading, userInfo, error } = userSignIn
+  const { loading, userInfo, error } = userSignIn;
+  const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -19,7 +20,7 @@ export default function SignIn(props) {
 
   useEffect(() => {
     if(userInfo){
-      props.history.push('/')
+      props.history.push(redirect)
     }
     return () => {
       //
@@ -57,9 +58,16 @@ export default function SignIn(props) {
             <button type='submit' className='checkout-button'>Sign In</button>
           </li>
           <li>New to the site?</li>
-          <li><Link to='/newuser' className='button secondary text-center'>Create your account</Link></li>
+          <li>
+            <Link
+              to={redirect === '/' ? 'newuser' : 'newuser?redirect=' + redirect}
+              className='button secondary text-center'>
+                Create your account
+            </Link>
+          </li>
         </ul>
       </form>
     </div>
   )
 }
+

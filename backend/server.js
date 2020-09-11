@@ -24,6 +24,7 @@ app.use(cors())
 app.use("/users", userRoute);
 app.use('/listings', listingRoute);
 
+
 // app.get('/listings', (req, res) => {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.send(data.listings);

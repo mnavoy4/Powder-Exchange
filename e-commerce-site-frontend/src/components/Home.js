@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { listListings } from '../actions/listingActions';
-// const listingsUrl = 'http://localhost:5000/listings';
 
 export default function Home(props) {
 
@@ -16,14 +15,30 @@ export default function Home(props) {
     }
   }, []);
 
-  return loading ? <div>Loading...</div> : 
-    error ? <div>{error}</div> : 
-    <ul className='listings'>
-      {
-        listings.map(listing => 
+  return (
+    <div>
+      <div className='filter-div'>
+        <form className='filter-form'>
+          Filter Listings: 
+          <select className='filter-select'>
+            <option value='all'>Show all</option>
+            <option value='ski'>Skis</option>
+            <option value='snowboard'>Snowboards</option>
+            <option value='jacket'>Jackets</option>
+            <option value='pant'>Pants</option>
+            <option value='helmet'>Helmets</option>
+            <option value='accessory'>Accessories</option>
+          </select>
+        </form>
+      </div>
+      {loading ? <div>Loading...</div> : 
+      error ? <div>{error}</div> : 
+      <ul className='listings'>
+        {
+          listings.map(listing => 
             <li key={listing._id}>
               <div className='listing'>
-                <Link to={`/listings/${listing._id}`}>
+                <Link to={`/listing/${listing._id}`}>
                   <img className='listing-image' src={listing.img_url} alt='listing' />
                 </Link>
                 <div className='listing-name'>
@@ -36,5 +51,10 @@ export default function Home(props) {
             </li>
           )
         }
-    </ul>
+      </ul>}
+    </div>
+
+  )
+  
+
 }

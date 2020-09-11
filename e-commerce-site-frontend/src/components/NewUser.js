@@ -14,6 +14,7 @@ export default function NewUser(props) {
   const newUser = useSelector(state => state.newUser);
   const { loading, newUserInfo, error } = newUser
   const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,7 +23,7 @@ export default function NewUser(props) {
 
   useEffect(() => {
     if(newUserInfo){
-      props.history.push('/')
+      props.history.push(redirect)
     }
     return () => {
       //
@@ -77,7 +78,13 @@ export default function NewUser(props) {
           <li>
             <button type='submit' className='checkout-button'>Create Account</button>
           </li>
-          <li>Already have an account? <Link to='/signin'>Sign In</Link></li>
+          <li>Already have an account? 
+            <Link
+              to={redirect === '/' ? 'signin' : 'signin?redirect=' + redirect}
+              className='button secondary text-center'>
+                Create your account
+              </Link>
+          </li>
         </ul>
       </form>
     </div>

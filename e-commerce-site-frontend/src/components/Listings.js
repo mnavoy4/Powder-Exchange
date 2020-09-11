@@ -21,14 +21,12 @@ export default function Listings(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(saveListing({ name, category, img_url, price, brand, condition, description }));
+    props.history.push('/');
   };
 
-  useEffect(() => {
-
-    return () => {
-      //
-    };
-  }, []);
+  const handleCreateButtonClick = () => {
+    props.history.push('/')
+  }
 
   return (
     <div className='form'>
