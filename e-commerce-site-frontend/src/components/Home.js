@@ -7,17 +7,18 @@ export default function Home(props) {
 
   const listingList = useSelector(state => state.listings);
   const { listings, loading, error } = listingList;
+  const category = props.match.params.id ? props.match.params.id : ''
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listListings())
+    dispatch(listListings(category))
     return () => {
       //
     }
-  }, []);
+  }, [category]);
 
   return (
     <div>
-      <div className='filter-div'>
+      {/* <div className='filter-div'>
         <form className='filter-form'>
           Filter Listings: 
           <select className='filter-select'>
@@ -30,7 +31,7 @@ export default function Home(props) {
             <option value='accessory'>Accessories</option>
           </select>
         </form>
-      </div>
+      </div> */}
       {loading ? <div>Loading...</div> : 
       error ? <div>{error}</div> : 
       <ul className='listings'>

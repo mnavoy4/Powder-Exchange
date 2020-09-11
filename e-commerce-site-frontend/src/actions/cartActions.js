@@ -20,7 +20,7 @@ const addToCart = (listingId) => async (dispatch, getState) => {
     Cookie.set("cartItems", JSON.stringify(cartItems));
   }
   catch(error) {
-
+    alert(error)
   }
 }
 

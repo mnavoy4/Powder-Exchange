@@ -10,10 +10,10 @@ import { LISTINGS_REQUEST,
         LISTING_SAVE_FAIL } from "../constants/listingConstants";
 const listingsUrl = 'http://localhost:5000/listings';
 
-const listListings = () => async (dispatch) => {
+const listListings = (category='') => async (dispatch) => {
   try {
     dispatch({ type: LISTINGS_REQUEST });
-    const { data } = await axios.get(listingsUrl);
+    const { data } = await axios.get(`${listingsUrl}?category=${category}`);
     dispatch({ type: LISTINGS_SUCCESS, payload: data })
   }
   catch(error){

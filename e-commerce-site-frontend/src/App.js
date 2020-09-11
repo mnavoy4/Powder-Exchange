@@ -33,7 +33,7 @@ export default function App() {
               <button onClick={openSideBar}>
                 &#9776;
               </button>
-              <Link to="/" >The Powder Exchange</Link> 
+              <Link to="/" >Powder Exchange</Link> 
             </div>
             <div className='header-links'>
               <a href='cart'>Cart</a>
@@ -47,22 +47,22 @@ export default function App() {
               <button className='sidebar-close-button' onClick={closeSideBar}>x</button>
               <ul>
                 <li>
-                  <a href='/'>Skis</a>
+                  <Link to='/category/ski' >Skis</Link>
                 </li>
                 <li>
-                  <a href='/'>Snowboards</a>
+                  <Link to='/category/snowboard' >Snowboards</Link>
                 </li>
                 <li>
-                  <a href='/'>Jackets</a>
+                  <Link to='/category/jacket' >Jackets</Link>
                 </li>
                 <li>
-                  <a href='/'>Pants</a>
+                  <Link to='/category/pant' >Pants</Link>
                 </li>
                 <li>
-                  <a href='/'>Helmets</a>
+                  <Link to='/category/helmet' >Helmets</Link>
                 </li>
                 <li>
-                  <a href='/'>Accessories</a>
+                  <Link to='/category/accessory' >Accessories</Link>
                 </li>
               </ul>
               <div onClick={closeSideBar} className='link-to-new-listing'><Link to='/listings'>Create New Listing</Link></div>
@@ -78,6 +78,7 @@ export default function App() {
               <Route path='/cart/:id?' component={Cart} />
               <Route exact={true} path='/' component={Home} />
               <Route path='/newuser' component={NewUser} />
+              <Route path='/category/:id' component={Home} />
             </div>
         
           </main>

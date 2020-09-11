@@ -1,11 +1,11 @@
 import express from 'express';
 import Listing from '../models/listingModel';
-import { getToken } from '../util';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const listings = await Listing.find({});
+  const category = req.query.category ? { category: req.query.category } : {};
+  const listings = await Listing.find({...category});
   res.send(listings)
 });
 
