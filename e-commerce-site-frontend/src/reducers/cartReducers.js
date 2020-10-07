@@ -18,6 +18,6 @@ function cartReducer(state={ cartItems: [], shipping: {}, payment: {} }, action)
     default: 
       return state
   }
-} 
+}
 
 export { cartReducer }

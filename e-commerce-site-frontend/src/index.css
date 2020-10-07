@@ -54,6 +54,9 @@ button {
   height: 50px;
   
 }
+.header-links {
+  margin-right: 1rem;
+}
 
 .brand a {
   color: #ffffff;

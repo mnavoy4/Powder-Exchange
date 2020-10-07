@@ -27,6 +27,10 @@ export default function PlaceOrder(props) {
     return Math.ceil(tax * 100) / 100
   }
 
+  const toUpperCase = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const totalListingsCost = cartItems.reduce((accumulator, current) => accumulator + current.price, 0);
   const shippingCost = 10;
   const taxCost = roundMoney(totalListingsCost * 0.1);
@@ -50,7 +54,7 @@ export default function PlaceOrder(props) {
           <div>
             <h3>Payment</h3>
             <div>
-              Payment Method: {payment.paymentMethod}
+              Payment Method: {toUpperCase(payment.paymentMethod)}
             </div>
           </div>
           <div>

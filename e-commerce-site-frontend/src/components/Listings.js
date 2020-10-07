@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveListing } from '../actions/listingActions';
-
-
 
 export default function Listings(props) {
 
@@ -23,10 +20,6 @@ export default function Listings(props) {
     dispatch(saveListing({ name, category, img_url, price, brand, condition, description }));
     props.history.push('/');
   };
-
-  const handleCreateButtonClick = () => {
-    props.history.push('/')
-  }
 
   return (
     <div className='form'>
