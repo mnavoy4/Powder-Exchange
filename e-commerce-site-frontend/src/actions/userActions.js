@@ -5,7 +5,7 @@ import {  USER_SIGNIN_SUCCESS,
           USER_SIGNIN_FAIL,
           USER_NEWUSER_REQUEST, 
           USER_NEWUSER_SUCCESS,
-          USER_NEWUSER_FAIL} from '../constants/userConstants';
+          USER_NEWUSER_FAIL } from '../constants/userConstants';
 
 const signIn = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });

@@ -12,7 +12,7 @@ export default function NewUser(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const newUser = useSelector(state => state.newUser);
-  const { loading, newUserInfo, error } = newUser
+  const { loading, newUserInfo, error } = newUser;
   const dispatch = useDispatch();
   const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
 
@@ -23,7 +23,7 @@ export default function NewUser(props) {
 
   useEffect(() => {
     if(newUserInfo){
-      props.history.push(redirect)
+      props.history.push(redirect);
     }
     return () => {
       //
@@ -82,7 +82,7 @@ export default function NewUser(props) {
             <Link
               to={redirect === '/' ? 'signin' : 'signin?redirect=' + redirect}
               className='button secondary text-center'>
-                Create your account
+                Sign In
               </Link>
           </li>
         </ul>

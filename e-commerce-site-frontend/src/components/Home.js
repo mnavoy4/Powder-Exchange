@@ -14,7 +14,7 @@ export default function Home(props) {
     return () => {
       //
     }
-  }, [category]);
+  }, []);
 
   return (
     <div>
